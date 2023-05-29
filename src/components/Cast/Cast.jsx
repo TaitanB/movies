@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchMovieCredits } from './api.js';
-import css from '../pages/MovieDetails.module.css';
+import { fetchMovieCredits } from '../services/api.js';
+import css from './Cast.module.css';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -10,7 +10,6 @@ const Cast = () => {
 
   useEffect(() => {
     fetchMovieCredits(movieId).then(movie => {
-      // console.log(`fetchMovieCredits ${movie.cast}`);
       setMovieCast(movie.cast);
     });
   }, [movieId]);
@@ -32,7 +31,7 @@ const Cast = () => {
             alt="profile_path"
           />
           <b>{cast.original_name}</b>
-          <p>Character: {cast.character}</p>
+          <p className={css.item_text}>Character: {cast.character}</p>
         </li>
       ))}
     </ul>

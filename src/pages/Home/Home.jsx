@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { fetchTrendingMovies } from '../components/api';
-import MoviesList from '../components/MoviesList';
-import css from '../components/SharedLayout.module.css';
+import { fetchTrendingMovies } from '../../components/services/api';
+import MoviesList from '../../components/MoviesList/MoviesList';
+import css from './Home.module.css';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -17,10 +17,10 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className={css.home_content}>
       <h1 className={css.title}>Trending today</h1>
       <MoviesList movies={trendingMovies} />
-    </>
+    </div>
   );
 };
 

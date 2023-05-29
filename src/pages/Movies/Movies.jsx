@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useLocation, useSearchParams, Outlet } from 'react-router-dom';
 
-import { fetchSearchMovies } from '../components/api';
-import MoviesList from '../components/MoviesList';
-import css from '../components/SharedLayout.module.css';
+import { fetchSearchMovies } from '../../components/services/api';
+import MoviesList from '../../components/MoviesList/MoviesList';
+
+import Loader from 'components/Loader/Loader';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,17 +17,14 @@ const Movies = () => {
 
   useEffect(() => {
     if (!searchQuery) {
-      // console.log('Поле пошуку порожнє');
       return;
     }
 
     const fetchsearchQuery = () => {
       fetchSearchMovies(searchQuery).then(movies => {
-        // console.log(`fetchSearchMovies ${movies}`);
         if (movies.length !== 0) {
           setMovies(movies);
         } else {
-          // console.log('Нічого не знайдено');
           alert('Nothing found.');
           setQuery('');
         }
@@ -39,11 +38,8 @@ const Movies = () => {
     event.preventDefault();
 
     if (query !== '') {
-      // console.log('Запит валідний');
-      // console.log(query);
       setSearchParams({ query: `${query}` });
     } else {
-      // console.log('Запит не валідний');
       alert('Please enter a valid value.');
       return;
     }
@@ -72,14 +68,14 @@ const Movies = () => {
           </button>
         </label>
       </form>
-      <Suspense fallback={<b>Loading...</b>}>
+      <Suspense fallback={<Loader />}>
         {movies.length === 0 ? (
-          <b>There are no movies here yet.</b>
+          <div className={css.no_movies}>There are no movies here yet.</div>
         ) : (
           <MoviesList movies={movies} prevLocation={location} />
         )}
       </Suspense>
-      <Suspense fallback={<b>Loading...</b>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

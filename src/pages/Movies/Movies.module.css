@@ -1,0 +1,32 @@
+.form {
+  padding-top: 140px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid rgb(83, 83, 132);
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: rgb(147, 147, 167);
+}
+
+.btn:hover,
+.btn:focus {
+  color: aliceblue;
+  background-color: red;
+  scale: 0.95;
+}
+
+.no_movies {
+  padding: 30px;
+  font-size: 36px;
+  text-align: center;
+}

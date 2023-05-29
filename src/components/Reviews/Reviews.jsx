@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchMovieReviews } from './api.js';
-import css from '../pages/MovieDetails.module.css';
+import { fetchMovieReviews } from '../services/api.js';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -10,7 +10,6 @@ const Reviews = () => {
 
   useEffect(() => {
     fetchMovieReviews(movieId).then(movie => {
-      // console.log(`fetchMovieCredits ${movie.results}`);
       setReviews(movie.results);
     });
   }, [movieId]);

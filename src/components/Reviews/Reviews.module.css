@@ -1,0 +1,8 @@
+.review {
+  list-style: none;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 5px;
+}

@@ -1,0 +1,22 @@
+.cast {
+  list-style: none;
+  max-width: 1080px;
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cast_item {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.item_text {
+  text-align: center;
+}

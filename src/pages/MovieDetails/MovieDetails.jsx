@@ -7,8 +7,10 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import { fetchMovie } from '../components/api';
+import { fetchMovie } from '../../components/services/api';
 import { TiArrowLeftThick } from 'react-icons/ti';
+
+import Loader from 'components/Loader/Loader';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -16,8 +18,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(location);
-  // console.log(movieId);
 
   let activeClassName = {
     color: 'red',
@@ -31,10 +31,8 @@ const MovieDetails = () => {
     });
   }, [movieId]);
 
-  // console.log(movie);
-
   if (!movie) {
-    return <b>Loading...</b>;
+    return <Loader />;
   }
 
   return (
@@ -74,6 +72,7 @@ const MovieDetails = () => {
           <ul>
             <li>
               <NavLink
+                className={css.link}
                 to="cast"
                 style={({ isActive }) =>
                   isActive ? activeClassName : undefined
@@ -85,6 +84,7 @@ const MovieDetails = () => {
             </li>
             <li>
               <NavLink
+                className={css.link}
                 to="reviews"
                 style={({ isActive }) =>
                   isActive ? activeClassName : undefined
@@ -97,7 +97,7 @@ const MovieDetails = () => {
           </ul>
         </div>
       </div>
-      <Suspense fallback={<b>Loading...</b>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

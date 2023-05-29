@@ -4,7 +4,7 @@ const BASE_API = 'https://api.themoviedb.org/3/';
 export const fetchTrendingMovies = async () => {
   try {
     const response = await fetch(
-      `${BASE_API}/trending/movie/week?api_key=${API_KEY}`
+      `${BASE_API}/trending/movie/day?api_key=${API_KEY}`
     );
     const data = await response.json();
     return data.results;

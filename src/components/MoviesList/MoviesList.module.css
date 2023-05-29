@@ -1,0 +1,27 @@
+.moviesList {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style-image: url(../../images/list-marker.png);
+}
+
+.item {
+  transition: all 400ms linear;
+}
+
+.item:hover,
+.item:focus {
+  transform: translateX(-10px);
+}
+
+.link {
+  color: #212121;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: color 400ms linear;
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(127, 54, 196);
+}
